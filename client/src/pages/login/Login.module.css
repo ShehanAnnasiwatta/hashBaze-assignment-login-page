@@ -1,3 +1,25 @@
-.text{
-    color: var(--bg-color);
+.outer__container{
+    padding: 2.5rem;
+}
+
+.container {
+    margin: 5rem 3.5rem 0;
+    padding: 2.25rem 3.5rem 1.75rem;
+    border: 1px solid black;
+    border-radius: 1.25rem;
+}
+
+.title {
+    width: fit-content;
+    margin: 0.5rem;
+}
+
+.title__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input {
+    margin-bottom: 0.8rem;
 }
