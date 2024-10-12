@@ -1,13 +1,24 @@
+.bg__img{
+    background-image:url('../../assets/bg-img.jpg');
+    background-size: cover;
+    /* background-position: center; */
+    position: relative;
+    height: 100vh;
+}
+
 .outer__container{
     padding: 2.5rem;
+    z-index: 1;
+    position: relative;
 }
 
 .container {
+    background-color: white;
     margin: 5rem 3.5rem 0;
     padding: 2.25rem 3.5rem 1.75rem;
     /* border: 0.0005px solid var(--boder-color); */
     border-radius: 1.25rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);    
 }
 
 .title {
