@@ -9,10 +9,11 @@ const styles = {
     padding: '0.875rem',
     fontSize: '1rem',
     marginBlock: '0.5rem',
-    bgcolor: grey['400'],
+    bgcolor: grey['800'],
     '&:hover':{
         bgcolor: grey['900']
-    }
+    },
+    boxShadow:"10px 5px 5px grey['500']"
 }
 
 const AuthButton = ({ title }) => {
