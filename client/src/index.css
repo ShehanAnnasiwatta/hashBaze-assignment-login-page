@@ -1,5 +1,15 @@
 :root{
-  --bg-color:red;
+  --boder-color:#ced4da;
+
+  --clr-primary:#495057;
+
+  --ff-primary:"Roboto", "Helvetica", "Arial", sans-serif;
+
+  --fs-body:0.875rem;
+
+  --fw-regular:400;
+  --fw-semiBold:500;
+  --fw-bold:700;
 }
 
 /* Box sizing rules */
