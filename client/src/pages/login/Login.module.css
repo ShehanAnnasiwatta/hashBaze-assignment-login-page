@@ -1,0 +1,31 @@
+.outer__container{
+    padding: 2.5rem;
+}
+
+.container {
+    margin: 5rem 3.5rem 0;
+    padding: 2.25rem 3.5rem 1.75rem;
+    border: 0.075px solid whitesmoke;
+    border-radius: 1.25rem;
+}
+
+.title {
+    width: fit-content;
+    margin: 0.5rem;
+}
+
+.title__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input {
+    margin-bottom: 0.8rem;
+}
+
+.form__container{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
