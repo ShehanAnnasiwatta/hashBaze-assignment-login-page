@@ -1,6 +1,9 @@
 import styles from './Login.module.css'
 import AuthButton from '../../components/button/AuthButton';
-import { Box, Container, TextField, Typography } from '@mui/material';
+import { Box, Container, TextField, Typography, InputAdornment, IconButton } from '@mui/material';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import { useEffect, useState } from 'react';
 
 const css = {
   borderRadius: {
@@ -8,13 +11,26 @@ const css = {
       borderRadius: '.5rem'
     }
   },
-  textWdith:{
+  textWdith: {
     width: 'fit-content'
+  },
+  icon:{
+    width:'1.1rem',
+    height:'1.1rem',
   }
 }
 
 
 const Login = () => {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handlePasswordVisibility = () => {
+    setShowPassword(!showPassword)
+  }
+
+  // useEffect(() => {
+  //   console.log(showPassword)
+  // }, [showPassword])
   return (
 
     <Container maxWidth='md'>
@@ -37,7 +53,8 @@ const Login = () => {
                 type='email'
                 fullWidth
                 className={styles.input}
-                sx={css.borderRadius} />
+                sx={css.borderRadius}
+              />
             </Box>
             <Box>
               <label htmlFor="password" className={styles.label}>Your password</label>
@@ -49,7 +66,19 @@ const Login = () => {
                 type='password'
                 fullWidth
                 className={styles.input}
-                sx={css.borderRadius} />
+                sx={css.borderRadius}
+                slotProps={{
+                  input: {
+                    endAdornment: <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={handlePasswordVisibility}
+                      >
+                        {showPassword ? <VisibilityOff  sx={css.icon}/> : <Visibility sx={css.icon}/>}
+                      </IconButton>
+                    </InputAdornment>
+                  }
+                }} />
             </Box>
             <Box>
               <Typography variant='caption'>
