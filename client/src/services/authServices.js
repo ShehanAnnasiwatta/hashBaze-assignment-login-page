@@ -1,5 +1,5 @@
 export const login = async (user) => {
-    await fetch('http://localhost:8080/api/login', {
+    const response = await fetch('http://localhost:8080/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
@@ -8,4 +8,19 @@ export const login = async (user) => {
             password: user.password
         })
     })
+
+    const currentUser = await response.json()
+
+    return currentUser;
+}
+
+export const currentUser = async () => {
+   const response = await fetch('http://localhost:8080/api/user', {
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include'
+    })
+
+    const user = await response.json();
+
+    console.log("current user: ", user.username);
 }

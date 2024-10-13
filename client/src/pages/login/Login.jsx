@@ -5,6 +5,7 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { useEffect, useState } from 'react';
 import { login } from '../../services/authServices';
+import { useNavigate } from 'react-router-dom';
 
 const css = {
   borderRadius: {
@@ -28,6 +29,7 @@ const Login = () => {
     email: '',
     password: ''
   })
+  const navigate = useNavigate();
 
   const handlePasswordVisibility = () => {
     setShowPassword(!showPassword)
@@ -38,14 +40,22 @@ const Login = () => {
     console.log("password: ", user.password);
   }, [user])
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    login(user)
+    
+    const currentUser = await login(user);
     setUser({
       email: '',
       password: ''
     })
+
+    // console.log(currentUser);
+
+    if (currentUser) {
+      navigate('/home')
+    }
   }
+
   return (
     <div className={styles.bg__img}>
       <Container maxWidth='md'>

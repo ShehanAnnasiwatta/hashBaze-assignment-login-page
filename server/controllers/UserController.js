@@ -58,9 +58,10 @@ const loginUser = async (req, res) => {
         maxAge: 24 * 60 * 60 * 1000 //1 day
     })
 
-    res.send({
-        message: "Success"
-    });
+    // res.send({
+    //     message: "Success"
+    // });
+    res.status(200).json(user);
 }
 
 // Get the current user
@@ -75,14 +76,14 @@ const getUser = async (req, res) => {
 
     const user = await User.findOne({ _id: decoded._id });
 
-    const { username, ...userInfo } = user.toJSON()
+    // const { username, ...userInfo } = user.toJSON()
 
-    res.send(username)
+    res.send(user);
 }
 
 
-    module.exports = {
-        registerUser,
-        loginUser,
-        getUser
-    }
+module.exports = {
+    registerUser,
+    loginUser,
+    getUser
+}
