@@ -63,7 +63,26 @@ const loginUser = async (req, res) => {
     });
 }
 
-module.exports = {
-    registerUser,
-    loginUser
+// Get the current user
+const getUser = async (req, res) => {
+    const token = req.cookies['jwt'];
+
+    const decoded = jwt.verify(token, process.env.SECRET_KEY);
+
+    if (!decoded) {
+        res.status(404).json({ message: "Unauthorized" });
+    }
+
+    const user = await User.findOne({ _id: decoded._id });
+
+    const { username, ...userInfo } = user.toJSON()
+
+    res.send(username)
 }
+
+
+    module.exports = {
+        registerUser,
+        loginUser,
+        getUser
+    }
