@@ -2,6 +2,7 @@ const express = require('express');
 const dotenv = require("dotenv").config();
 const mongoose = require('mongoose');
 const colors = require('colors');
+const cors = require('cors')
 const connectDb = require('./config');
 const PORT = process.env.PORT;
 
@@ -14,6 +15,10 @@ app.get('/', (req, res) => {
 const userRouter = require('./routers/UserRouter')
 
 app.use(express.json())
+app.use(cors({
+    credentials: true,
+    origin: 'http://localhost:3000'
+}))
 app.use('/api', userRouter);
 
 

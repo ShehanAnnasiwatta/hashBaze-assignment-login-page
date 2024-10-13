@@ -4,6 +4,7 @@ import { Box, Container, TextField, Typography, InputAdornment, IconButton } fro
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { useEffect, useState } from 'react';
+import { login } from '../../services/authServices';
 
 const css = {
   borderRadius: {
@@ -23,14 +24,28 @@ const css = {
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [user, setUser] = useState({
+    email: '',
+    password: ''
+  })
 
   const handlePasswordVisibility = () => {
     setShowPassword(!showPassword)
   }
 
-  // useEffect(() => {
-  //   console.log(showPassword)
-  // }, [showPassword])
+  useEffect(() => {
+    console.log("email: ", user.email);
+    console.log("password: ", user.password);
+  }, [user])
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    login(user)
+    setUser({
+      email: '',
+      password: ''
+    })
+  }
   return (
     <div className={styles.bg__img}>
       <Container maxWidth='md'>
@@ -42,7 +57,7 @@ const Login = () => {
               </Typography>
             </Box>
             {/* Form component */}
-            <Box component='form' onSubmit={''} className={styles.form__container}>
+            <Box component='form' onSubmit={handleSubmit} className={styles.form__container}>
               <Box>
                 <label htmlFor="email" className={styles.label}>Email</label>
                 <TextField
@@ -54,11 +69,15 @@ const Login = () => {
                   fullWidth
                   className={styles.input}
                   sx={css.borderRadius}
+                  value={user.email}
+                  onChange={(e) => setUser({ ...user, email: e.target.value })}
                 />
               </Box>
               <Box>
                 <label htmlFor="password" className={styles.label}>Your password</label>
                 <TextField
+                  value={user.password}
+                  onChange={(e) => setUser({ ...user, password: e.target.value })}
                   required
                   variant='outlined'
                   id='password'
