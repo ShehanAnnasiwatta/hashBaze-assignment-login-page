@@ -1,6 +1,6 @@
 import './App.css'
 import Home from './pages/home/home'
-import Login from './pages/login/login'
+import Login from './pages/login/Login'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 
@@ -11,7 +11,7 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route path='/home' element={<Home />} />
+          <Route path='/' element={<Home />} />
           <Route path='/login' element={<Login />} />
         </Routes>
       </Router>

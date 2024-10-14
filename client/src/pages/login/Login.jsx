@@ -5,6 +5,7 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { useEffect, useState } from 'react';
 import { login } from '../../services/authServices';
+// import { NAVIGATE } from '../../utils/constants';
 import { useNavigate } from 'react-router-dom';
 
 const css = {
@@ -29,7 +30,8 @@ const Login = () => {
     email: '',
     password: ''
   })
-  const navigate = useNavigate();
+
+  const naviagte = useNavigate()
 
   const handlePasswordVisibility = () => {
     setShowPassword(!showPassword)
@@ -53,7 +55,7 @@ const Login = () => {
     // console.log(currentUser);
 
     if (currentUser) {
-      navigate('/home')
+      naviagte('/')
     }
   }
 
