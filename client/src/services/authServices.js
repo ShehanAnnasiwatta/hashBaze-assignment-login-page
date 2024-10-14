@@ -1,3 +1,5 @@
+import toast from "react-hot-toast";
+
 export const login = async (user) => {
     try {
         const response = await fetch('http://localhost:8080/api/login', {
@@ -18,6 +20,7 @@ export const login = async (user) => {
         const currentUser = await response.json()
         return currentUser;
     } catch (error) {
+        toast.error(error.message)
         console.error('Error :', error);
         throw error;
     }
@@ -44,7 +47,7 @@ export const currentUser = async (setUser) => {
         setUser(user.username);
     } catch (error) {
         console.error('Error:', error);
-        setUser('');
+        setUser(null);
     }
 
 }
