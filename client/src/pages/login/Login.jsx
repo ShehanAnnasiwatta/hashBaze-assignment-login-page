@@ -35,15 +35,16 @@ const Login = () => {
     setShowPassword(!showPassword)
   }
 
-  useEffect(() => {
-    console.log("email: ", user.email);
-    console.log("password: ", user.password);
-  }, [user])
+  // useEffect(() => {
+  //   console.log("email: ", user.email);
+  //   console.log("password: ", user.password);
+  // }, [user])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     const currentUser = await login(user);
+    
     setUser({
       email: '',
       password: ''
@@ -92,7 +93,7 @@ const Login = () => {
                   variant='outlined'
                   id='password'
                   size='small'
-                  type='password'
+                  type={showPassword ? 'text' : 'password'}
                   fullWidth
                   className={styles.input}
                   sx={css.borderRadius}

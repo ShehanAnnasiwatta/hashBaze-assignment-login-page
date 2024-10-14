@@ -14,13 +14,14 @@ export const login = async (user) => {
     return currentUser;
 }
 
-export const currentUser = async () => {
+export const currentUser = async (setUser) => {
    const response = await fetch('http://localhost:8080/api/user', {
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include'
     })
 
     const user = await response.json();
-
-    console.log("current user: ", user.username);
+    
+    // console.log("current user: ", user.username);
+    setUser(user.username);
 }
